@@ -22,10 +22,13 @@ def upload():
 
     if request.method == 'POST':
         file = request.files['file']
-        print('filename:', file.filename)
 
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
+
+            if not os.path.exists(app.config['UPLOAD_FOLDER']):
+                os.makedirs(app.config['UPLOAD_FOLDER'])
+
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
             transformer(filepath=app.config['UPLOAD_FOLDER'], filename=filename)
@@ -40,9 +43,8 @@ def about():
 
 @app.route('/uploads/<filename>')
 def uploads(filename):
-    
+
     return render_template(
         'uploads.html',
-        filepath='{0}static{0}uploads{0}'.format(os.path.sep),
-        filename=filename.split('.')[0] + '.png',
+        src=os.path.join(os.sep, 'static', 'uploads', filename.split('.')[0] + '.png'),
     )
