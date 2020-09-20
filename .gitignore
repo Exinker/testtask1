@@ -1,0 +1,15 @@
+
+# Mac/OSX
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Source for the following rules: https://raw.githubusercontent.com/github/gitignore/master/Python.gitignore
+__pycache__/
+
+# Environments
+env/
+
+static/uploads/*.png
+static/uploads/*.mp3

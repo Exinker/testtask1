@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <style>
+            .contaner {
+                color: grey;
+                font-size: 20pt;
+            }
+        </style>
+
+        {% if title: %}
+            <title>mp3 converter - {{ title }}</title>
+        {% else: %}
+            <title>mp3 converter</title>
+        {% endif %}
+    </head>
+    <body>
+        <div>mp3 converter: <a href="/index">Home</a> <a href="/about">About</a></div>
+        {% block content %}{% endblock content %}
+    </body>
+
+</html>
